@@ -32,16 +32,16 @@ Signing_Test::create_verify_HMAC_Sha256()
     CryptoPP::SecByteBlock key((unsigned char*)"asdf", 4);
     std::string resultingHmac;
 
-    TEST_EQUAL(Kitsunemimi::Crypto::create_HMAC_Sha256(resultingHmac, testData, key), true);
+    TEST_EQUAL(Kitsunemimi::Crypto::create_HMAC_SHA256(resultingHmac, testData, key), true);
 
     TEST_EQUAL(resultingHmac, "58yA7QZ+I1opAOhoaWLwj4wnxUKz5xaYafjE+Vcb6c4=");
 
     // positive validation test
-    TEST_EQUAL(Kitsunemimi::Crypto::verify_HMAC_Sha256(testData, resultingHmac, key), true);
+    TEST_EQUAL(Kitsunemimi::Crypto::verify_HMAC_SHA256(testData, resultingHmac, key), true);
 
     // negative validation test
     testData[2] = 'a';
-    TEST_EQUAL(Kitsunemimi::Crypto::verify_HMAC_Sha256(testData, resultingHmac, key), false);
+    TEST_EQUAL(Kitsunemimi::Crypto::verify_HMAC_SHA256(testData, resultingHmac, key), false);
 }
 
 }

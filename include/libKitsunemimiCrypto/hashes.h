@@ -26,16 +26,6 @@ void generate_SHA_256(std::string &result,
 void generate_SHA_256(std::string &result,
                       const void* input,
                       const uint64_t inputSize);
-
-//--------------------------------------------------------------------------------------------------
-// MD5
-//--------------------------------------------------------------------------------------------------
-void generate_MD5(std::string &result,
-                  const std::string &input);
-
-void generate_MD5(std::string &result,
-                  const void* input,
-                  const uint64_t inputSize);
 }
 }
 

@@ -24,7 +24,6 @@ public:
 
 private:
     void generate_SHA_256_test();
-    void generate_MD5_test();
 };
 
 }

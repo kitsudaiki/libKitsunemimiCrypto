@@ -286,9 +286,11 @@ decodeBase64(DataBuffer &result,
 }
 
 /**
- * @brief base64ToBase64Url
- * @param base64
- * @return
+ * @brief convert an base64 string into a url compatible base64Url version
+ *
+ * @param base64 reference to the base64-string to convert
+ *
+ * @return false, if input is invalid, else false
  */
 bool
 base64ToBase64Url(std::string &base64)
@@ -317,9 +319,11 @@ base64ToBase64Url(std::string &base64)
 }
 
 /**
- * @brief base64UrlToBase64
- * @param base64Url
- * @return
+ * @brief convert an base64Url string into a standard base64 version
+ *
+ * @param base64Url reference to the base64Url-string to convert
+ *
+ * @return false, if input is invalid, else false
  */
 bool
 base64UrlToBase64(std::string &base64Url)

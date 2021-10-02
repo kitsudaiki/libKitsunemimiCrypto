@@ -15,17 +15,26 @@ namespace Crypto
 {
 
 /**
- * @brief encryptAes256
- * @param result
- * @param input
- * @param key
- * @return
+ * @brief encrypt aes-256-cbc encrypted data
+ *
+ * @param result reference for the result of the encryption
+ * @param input input to encrypt
+ * @param key key for encryption
+ *
+ * @return false, if input is invaid, else true
  */
 bool
 encrypt_AES_256(std::string &result,
                 const std::string &input,
                 const CryptoPP::SecByteBlock &key)
 {
+    // precheck
+    if(key.size() == 0
+            || input.size() == 0)
+    {
+        return false;
+    }
+
     // should never ever be differ, but its only to be save
     assert(2 * CryptoPP::AES::MAX_KEYLENGTH == CryptoPP::SHA512::DIGESTSIZE);
 
@@ -47,17 +56,26 @@ encrypt_AES_256(std::string &result,
 }
 
 /**
- * @brief decryptAes256
- * @param result
- * @param input
- * @param key
- * @return
+ * @brief decrypt aes-256-cbc encrypted data
+ *
+ * @param result reference for the result of the decryption
+ * @param input input to decrypt
+ * @param key key for decryption
+ *
+ * @return false, if input is invaid, else true
  */
 bool
 decrypt_AES_256(std::string &result,
                 const std::string &input,
                 const CryptoPP::SecByteBlock &key)
 {
+    // precheck
+    if(key.size() == 0
+            || input.size() == 0)
+    {
+        return false;
+    }
+
     // precheck
     if(input.size() % CryptoPP::AES::BLOCKSIZE != 0)
     {

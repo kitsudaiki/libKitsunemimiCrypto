@@ -15,21 +15,23 @@ namespace Crypto
 {
 
 /**
- * @brief createHMAC
- * @param result
- * @param input
- * @param key
- * @return
+ * @brief create a base64 encoded HMAC-value from an input-string
+ *
+ * @param result reference for the resulting string
+ * @param input input-string to create the HMAC-value
+ * @param key key for creating the HMAC
+ *
+ * @return always true at the moment
  */
 bool
-create_HMAC_Sha256(std::string &result,
+create_HMAC_SHA256(std::string &result,
                    const std::string &input,
                    const CryptoPP::SecByteBlock &key)
 {
-    // calculate hmac signature
     unsigned int len = 32;
     unsigned char hmacResult[len];
 
+    // calculate hmac signature
     HMAC_CTX* ctx = HMAC_CTX_new();
     HMAC_Init_ex(ctx,
                  key.data(),
@@ -47,18 +49,21 @@ create_HMAC_Sha256(std::string &result,
 }
 
 /**
- * @brief verifyHMAC
- * @param input
- * @param key
- * @return
+ * @brief verify a HMAC-SHA256 input
+ *
+ * @param input input-string to verify
+ * @param hmac base64-encoded HMAC-string, which belongs to the input
+ * @param key key for verify
+ *
+ * @return true, if verification was successfull, else false
  */
 bool
-verify_HMAC_Sha256(const std::string &input,
+verify_HMAC_SHA256(const std::string &input,
                    const std::string &hmac,
                    const CryptoPP::SecByteBlock &key)
 {
     std::string compareHmac;
-    create_HMAC_Sha256(compareHmac, input, key);  // TODO: handle result
+    create_HMAC_SHA256(compareHmac, input, key);  // TODO: handle result
 
     const bool result = hmac.size() == compareHmac.size()
                         && CRYPTO_memcmp(hmac.c_str(), compareHmac.c_str(), hmac.size()) == 0;

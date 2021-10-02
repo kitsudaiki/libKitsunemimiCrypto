@@ -25,11 +25,11 @@ namespace Crypto
 //--------------------------------------------------------------------------------------------------
 // HMAC
 //--------------------------------------------------------------------------------------------------
-bool create_HMAC_Sha256(std::string &result,
+bool create_HMAC_SHA256(std::string &result,
                         const std::string &input,
                         const CryptoPP::SecByteBlock &key);
 
-bool verify_HMAC_Sha256(const std::string &input,
+bool verify_HMAC_SHA256(const std::string &input,
                         const std::string &hmac,
                         const CryptoPP::SecByteBlock &key);
 

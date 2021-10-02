@@ -12,7 +12,6 @@
 #include <cryptopp/modes.h>
 #include <cryptopp/filters.h>
 #include <cryptopp/sha.h>
-#include <cryptopp/md5.h>
 
 namespace Kitsunemimi
 {
@@ -24,70 +23,35 @@ namespace Crypto
 //--------------------------------------------------------------------------------------------------
 
 /**
- * @brief generateSha256
- * @param result
- * @param input
+ * @brief generate SHA256 hash
+ *
+ * @param result reference for the resulting string
+ * @param input input-string to hash
  */
 void
 generate_SHA_256(std::string &result,
-               const std::string &input)
+                 const std::string &input)
 {
     generate_SHA_256(result, &input[0], input.size());
 }
 
 /**
- * @brief generateSha256
- * @param result
- * @param input
- * @param inputSize
+ * @brief generate SHA256 hash
+ *
+ * @param result reference for the resulting string
+ * @param input pointer to the input-data
+ * @param inputSize size of input-data in number of bytes
  */
 void
 generate_SHA_256(std::string &result,
-               const void* input,
-               const uint64_t inputSize)
+                 const void* input,
+                 const uint64_t inputSize)
 {
     // input MUST be cleared to avoid conflicts
     result.clear();
 
     CryptoPP::SHA256 hash;
     byte digest[CryptoPP::SHA256::DIGESTSIZE];
-
-    hash.CalculateDigest(digest, (byte*)input, inputSize);
-    hexEncode(result, digest, sizeof(digest));
-}
-
-//--------------------------------------------------------------------------------------------------
-// MD5
-//--------------------------------------------------------------------------------------------------
-
-/**
- * @brief generateMd5
- * @param result
- * @param input
- */
-void
-generate_MD5(std::string &result,
-            const std::string &input)
-{
-    generate_MD5(result, &input[0], input.size());
-}
-
-/**
- * @brief generateMd5
- * @param result
- * @param input
- * @param inputSize
- */
-void
-generate_MD5(std::string &result,
-            const void* input,
-            const uint64_t inputSize)
-{
-    // input MUST be cleared to avoid conflicts
-    result.clear();
-
-    CryptoPP::MD5 hash;
-    byte digest[CryptoPP::MD5::DIGESTSIZE];
 
     hash.CalculateDigest(digest, (byte*)input, inputSize);
     hexEncode(result, digest, sizeof(digest));
