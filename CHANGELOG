@@ -1,2 +1,10 @@
 # Changelog
 
+## [0.1.0] - 2021-10-02
+
+### Added
+- initial version with basic functionalities
+    - SHA256
+    - HMAC
+    - AES256
+    - BASE64
