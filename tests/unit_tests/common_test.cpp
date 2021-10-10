@@ -77,19 +77,19 @@ Common_Test::decodeBase64_test()
     Kitsunemimi::DataBuffer result;
 
     decodeBase64(result, "YXNkZmFzZGZhc2RmMTIzYQ==");
-    decode = std::string(static_cast<char*>(result.data), result.bufferPosition);
+    decode = std::string(static_cast<char*>(result.data), result.usedBufferSize);
     TEST_EQUAL(decode, "asdfasdfasdf123a");
 
     reset_DataBuffer(result, 1);
 
     decodeBase64(result, "MzI1Nnp1");
-    decode = std::string(static_cast<char*>(result.data), result.bufferPosition);
+    decode = std::string(static_cast<char*>(result.data), result.usedBufferSize);
     TEST_EQUAL(decode, "3256zu");
 
     reset_DataBuffer(result, 1);
 
     decodeBase64(result, "NWk=");
-    decode = std::string(static_cast<char*>(result.data), result.bufferPosition);
+    decode = std::string(static_cast<char*>(result.data), result.usedBufferSize);
     TEST_EQUAL(decode, "5i");
 }
 

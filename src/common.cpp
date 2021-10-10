@@ -252,7 +252,7 @@ decodeBase64(DataBuffer &result,
     // prepare buffer for result
     const uint64_t bufferSize = (input.size() / 4) * 3;
     allocateBlocks_DataBuffer(result, (bufferSize / 4096) + 1);
-    result.bufferPosition = bufferSize;
+    result.usedBufferSize = bufferSize;
 
     // transform input
     const void* tempPtr = static_cast<const void*>(input.c_str());
@@ -269,12 +269,12 @@ decodeBase64(DataBuffer &result,
     if(input.at(input.size() - 1) == '='
             && input.at(input.size() - 2) == '=')
     {
-        result.bufferPosition -= 2;
+        result.usedBufferSize -= 2;
         convertFromBase64(&output[lastPos], buf[lastPos], 1);
     }
     else if(input.at(input.size() - 1) == '=')
     {
-        result.bufferPosition -= 1;
+        result.usedBufferSize -= 1;
         convertFromBase64(&output[lastPos], buf[lastPos], 2);
     }
     else
