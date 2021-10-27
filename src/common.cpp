@@ -295,10 +295,12 @@ decodeBase64(DataBuffer &result,
 bool
 base64ToBase64Url(std::string &base64)
 {
+    // precheck
     if(base64.size() < 2) {
         return false;
     }
 
+    // replace characters
     for(uint32_t i = 0; i < base64.size(); i++)
     {
         if(base64[i] == '+') {
@@ -309,6 +311,7 @@ base64ToBase64Url(std::string &base64)
         }
     }
 
+    // remove padding
     if(base64[base64.size() - 2] == '=') {
         base64.resize(base64.size() - 2);
     } else if(base64[base64.size() - 1] == '=') {
@@ -328,10 +331,12 @@ base64ToBase64Url(std::string &base64)
 bool
 base64UrlToBase64(std::string &base64Url)
 {
+    // precheck
     if(base64Url.size() < 2) {
         return false;
     }
 
+    // replace characters
     for(uint32_t i = 0; i < base64Url.size(); i++)
     {
         if(base64Url[i] == '-') {
@@ -342,6 +347,7 @@ base64UrlToBase64(std::string &base64Url)
         }
     }
 
+    // readd padding
     if(base64Url.size() % 4 == 2) {
         base64Url += "==";
     } else if(base64Url.size() % 4 == 3) {
