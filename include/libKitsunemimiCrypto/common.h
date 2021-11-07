@@ -33,6 +33,8 @@ void encodeBase64(std::string &output,
                   const uint64_t dataSize);
 bool decodeBase64(DataBuffer &result,
                   const std::string &input);
+bool decodeBase64(std::string &result,
+                  const std::string &input);
 
 bool base64ToBase64Url(std::string &base64);
 bool base64UrlToBase64(std::string &base64Url);

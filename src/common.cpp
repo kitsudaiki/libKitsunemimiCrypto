@@ -286,6 +286,26 @@ decodeBase64(DataBuffer &result,
 }
 
 /**
+ * @brief decode Base64 string
+ *
+ * @param result string for the output of the result
+ * @param input Base64 string to convert
+ *
+ * @return false, if input has invalid length, else true
+ */
+bool
+decodeBase64(std::string &result,
+             const std::string &input)
+{
+    DataBuffer buffer;
+    const bool ret = decodeBase64(buffer, input);
+    if(ret) {
+        result = std::string(static_cast<char*>(buffer.data), buffer.usedBufferSize);
+    }
+    return ret;
+}
+
+/**
  * @brief convert an base64 string into a url compatible base64Url version
  *
  * @param base64 reference to the base64-string to convert
