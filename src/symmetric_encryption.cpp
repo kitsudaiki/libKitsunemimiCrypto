@@ -80,10 +80,10 @@ decrypt_AES_256(std::string &result,
     if(input.size() % CryptoPP::AES::BLOCKSIZE != 0)
     {
         ErrorContainer error;
-        error.errorMessage = "can not decrypt AES256, "
-                             "because the mount of data has the a size of a multiple"
-                             " of the blocksize " + std::to_string(CryptoPP::AES::BLOCKSIZE);
-        error.possibleSolution = "data are broken or not an AES 256 encrypted string";
+        error.addMeesage("can not decrypt AES256, "
+                         "because the mount of data has the a size of a multiple"
+                         " of the blocksize " + std::to_string(CryptoPP::AES::BLOCKSIZE));
+        error.addSolution("data are broken or not an AES 256 encrypted string");
         LOG_ERROR(error);
         return false;
     }
