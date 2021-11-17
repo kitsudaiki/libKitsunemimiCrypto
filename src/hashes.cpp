@@ -13,6 +13,8 @@
 #include <cryptopp/filters.h>
 #include <cryptopp/sha.h>
 
+#include <libKitsunemimiCommon/common_methods/string_methods.h>
+
 namespace Kitsunemimi
 {
 namespace Crypto
@@ -55,6 +57,7 @@ generate_SHA_256(std::string &result,
 
     hash.CalculateDigest(digest, (byte*)input, inputSize);
     hexEncode(result, digest, sizeof(digest));
+    Kitsunemimi::toLowerCase(result);
 }
 
 }
