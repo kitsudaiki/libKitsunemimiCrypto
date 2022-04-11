@@ -23,7 +23,7 @@ hexEncode(std::string &result,
 {
     CryptoPP::HexEncoder encoder;
     encoder.Attach(new CryptoPP::StringSink(result));
-    encoder.Put((byte*)data, dataSize);
+    encoder.Put((CryptoPP::byte*)data, dataSize);
     encoder.MessageEnd();
 }
 
@@ -245,7 +245,9 @@ decodeBase64(DataBuffer &result,
              const std::string &input)
 {
     // precheck
-    if(input.size() % 4 != 0) {
+    if(input.size() == 0
+            || input.size() % 4 != 0)
+    {
         return false;
     }
 

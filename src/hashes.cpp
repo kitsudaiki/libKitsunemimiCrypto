@@ -53,9 +53,9 @@ generate_SHA_256(std::string &result,
     result.clear();
 
     CryptoPP::SHA256 hash;
-    byte digest[CryptoPP::SHA256::DIGESTSIZE];
+    CryptoPP::byte digest[CryptoPP::SHA256::DIGESTSIZE];
 
-    hash.CalculateDigest(digest, (byte*)input, inputSize);
+    hash.CalculateDigest(digest, (CryptoPP::byte*)input, inputSize);
     hexEncode(result, digest, sizeof(digest));
     Kitsunemimi::toLowerCase(result);
 }

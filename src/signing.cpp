@@ -55,7 +55,7 @@ create_HMAC_SHA256(std::string &result,
  * @param hmac base64-encoded HMAC-string, which belongs to the input
  * @param key key for verify
  *
- * @return true, if verification was successfull, else false
+ * @return true, if verification was successful, else false
  */
 bool
 verify_HMAC_SHA256(const std::string &input,
