@@ -1,6 +1,6 @@
 # libKitsunemimiCrypto
 
-![Gitlab pipeline status](https://img.shields.io/gitlab/pipeline/kitsudaiki/libKitsunemimiCrypto?label=build%20and%20test&style=flat-square)
+![Github workfloat status](https://img.shields.io/github/workflow/status/kitsudaiki/libKitsunemimiCrypto/build-and-test/develop?label=build%20and%20test&style=flat-square)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/kitsudaiki/libKitsunemimiCrypto?label=version&style=flat-square)
 ![GitHub](https://img.shields.io/github/license/kitsudaiki/libKitsunemimiCrypto?style=flat-square)
 ![C++Version](https://img.shields.io/badge/c%2B%2B-17-blue?style=flat-square)
@@ -20,7 +20,7 @@ g++ | g++ | >= 8.0 | Compiler for the C++ code.
 make | make | >= 4.0 | process the make-file, which is created by qmake to build the programm with g++
 qmake | qt5-qmake | >= 5.0 | This package provides the tool qmake, which is similar to cmake and create the make-file for compilation.
 ssl library | libssl-dev | >= 1.1.1f | provides signing-functions
-crpyto++ | libcrypto++-dev | >= 5.6 | provides encryption-functions like AES
+crpyto++ | libcrypto++-dev | >= 8.4 | provides encryption-functions like AES
 
 
 Installation on Ubuntu/Debian:
@@ -35,7 +35,7 @@ IMPORTANT: All my projects are only tested on Linux.
 
 Repository-Name | Version-Tag | Download-Path
 --- | --- | ---
-libKitsunemimiCommon | v0.23.0 |  https://github.com/kitsudaiki/libKitsunemimiCommon.git
+libKitsunemimiCommon | v0.26.1 |  https://github.com/kitsudaiki/libKitsunemimiCommon.git
 
 HINT: These Kitsunemimi-Libraries will be downloaded and build automatically with the build-script below.
 
