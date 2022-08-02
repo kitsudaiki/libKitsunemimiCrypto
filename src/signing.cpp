@@ -14,6 +14,8 @@ namespace Kitsunemimi
 namespace Crypto
 {
 
+#define OPENSSL_API_COMPAT 0x10101000L
+
 /**
  * @brief create a base64 encoded HMAC-value from an input-string
  *
