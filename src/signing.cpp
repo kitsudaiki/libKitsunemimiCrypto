@@ -25,14 +25,27 @@ namespace Crypto
  * @param result reference for the resulting string
  * @param input input-string to create the HMAC-value
  * @param key key for creating the HMAC
+ * @param error reference for error-output
  *
- * @return always true at the moment
+ * @return false, if input is invalid, else true
  */
 bool
 create_HMAC_SHA256(std::string &result,
                    const std::string &input,
-                   const CryptoPP::SecByteBlock &key)
+                   const CryptoPP::SecByteBlock &key,
+                   ErrorContainer &error)
 {
+    if(input.size() == 0)
+    {
+        error.addMeesage("Creating HMAC failed, because input is empty");
+        return false;
+    }
+    if(key.size() == 0)
+    {
+        error.addMeesage("Creating HMAC failed, because key is empty");
+        return false;
+    }
+
     unsigned int len = 32;
     unsigned char hmacResult[len];
 
@@ -68,7 +81,13 @@ verify_HMAC_SHA256(const std::string &input,
                    const CryptoPP::SecByteBlock &key)
 {
     std::string compareHmac;
-    create_HMAC_SHA256(compareHmac, input, key);  // TODO: handle result
+
+    // false in this function can also only mean, that the input doesn't match and doesn't have
+    // to be an error-case, so the error-container is ony handled inter in this case
+    ErrorContainer error;
+    if(create_HMAC_SHA256(compareHmac, input, key, error) == false) {
+        return false;
+    }
 
     const bool result = hmac.size() == compareHmac.size()
                         && CRYPTO_memcmp(hmac.c_str(), compareHmac.c_str(), hmac.size()) == 0;

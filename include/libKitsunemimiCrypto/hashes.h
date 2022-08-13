@@ -20,10 +20,10 @@ namespace Crypto
 //--------------------------------------------------------------------------------------------------
 // SHA256
 //--------------------------------------------------------------------------------------------------
-void generate_SHA_256(std::string &result,
+bool generate_SHA_256(std::string &result,
                       const std::string &input);
 
-void generate_SHA_256(std::string &result,
+bool generate_SHA_256(std::string &result,
                       const void* input,
                       const uint64_t inputSize);
 

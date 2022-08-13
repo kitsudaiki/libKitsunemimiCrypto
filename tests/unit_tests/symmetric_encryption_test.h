@@ -26,7 +26,7 @@ private:
     void encrypt_decrypt_AES_256();
 };
 
-}
-}
+} // namespace Crypto
+} // namespace Kitsunemimi
 
 #endif // SYMMETRIC_ENCRYPTION_TEST_H

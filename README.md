@@ -149,6 +149,7 @@ Example to create an verify HMAC-strings
 #include <libKitsunemimiCrypto/signing.h>
 #include <libKitsunemimiCrypto/common.h>
 
+Kitsunemimi::ErrorContainer error;
 std::string testData = "this is a test-string";
 
 // create key. Can have any length
@@ -156,8 +157,9 @@ CryptoPP::SecByteBlock key((unsigned char*)"asdf", 4);
 
 // create HMAC from the testData by useing the key
 std::string resultingHmac;
-Kitsunemimi::Crypto::create_HMAC_SHA256(resultingHmac, testData, key)
+Kitsunemimi::Crypto::create_HMAC_SHA256(resultingHmac, testData, key, error)
 // resultingHmac has now the content "58yA7QZ+I1opAOhoaWLwj4wnxUKz5xaYafjE+Vcb6c4="
+// return false, if input-data or key is empty
 
 // check if a string belongs to an HMAC-value
 Kitsunemimi::Crypto::verify_HMAC_SHA256(testData, resultingHmac, key);

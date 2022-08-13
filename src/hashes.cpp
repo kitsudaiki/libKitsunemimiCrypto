@@ -29,12 +29,14 @@ namespace Crypto
  *
  * @param result reference for the resulting string
  * @param input input-string to hash
+ *
+ * @return false, if input is empty-string, else true
  */
-void
+bool
 generate_SHA_256(std::string &result,
                  const std::string &input)
 {
-    generate_SHA_256(result, &input[0], input.size());
+    return generate_SHA_256(result, &input[0], input.size());
 }
 
 /**
@@ -43,12 +45,20 @@ generate_SHA_256(std::string &result,
  * @param result reference for the resulting string
  * @param input pointer to the input-data
  * @param inputSize size of input-data in number of bytes
+ *
+ * @return false, if input is invalid, else true
  */
-void
+bool
 generate_SHA_256(std::string &result,
                  const void* input,
                  const uint64_t inputSize)
 {
+    if(input == nullptr
+            || inputSize == 0)
+    {
+        return false;
+    }
+
     // input MUST be cleared to avoid conflicts
     result.clear();
 
@@ -58,6 +68,8 @@ generate_SHA_256(std::string &result,
     hash.CalculateDigest(digest, (CryptoPP::byte*)input, inputSize);
     hexEncode(result, digest, sizeof(digest));
     Kitsunemimi::toLowerCase(result);
+
+    return true;
 }
 
 } // namespace Crypto

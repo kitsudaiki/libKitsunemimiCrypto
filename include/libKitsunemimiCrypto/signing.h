@@ -17,6 +17,8 @@
 #include <openssl/ec.h>
 #include <cryptopp/aes.h>
 
+#include <libKitsunemimiCommon/logger.h>
+
 namespace Kitsunemimi
 {
 namespace Crypto
@@ -27,7 +29,8 @@ namespace Crypto
 //--------------------------------------------------------------------------------------------------
 bool create_HMAC_SHA256(std::string &result,
                         const std::string &input,
-                        const CryptoPP::SecByteBlock &key);
+                        const CryptoPP::SecByteBlock &key,
+                        Kitsunemimi::ErrorContainer &error);
 
 bool verify_HMAC_SHA256(const std::string &input,
                         const std::string &hmac,
