@@ -60,5 +60,5 @@ generate_SHA_256(std::string &result,
     Kitsunemimi::toLowerCase(result);
 }
 
-}
-}
+} // namespace Crypto
+} // namespace Kitsunemimi

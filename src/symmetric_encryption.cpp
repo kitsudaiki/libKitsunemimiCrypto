@@ -20,18 +20,25 @@ namespace Crypto
  * @param result reference for the result of the encryption
  * @param input input to encrypt
  * @param key key for encryption
+ * @param error reference for error-output
  *
  * @return false, if input is invaid, else true
  */
 bool
-encrypt_AES_256(std::string &result,
-                const std::string &input,
-                const CryptoPP::SecByteBlock &key)
+encrypt_AES_256_CBC(std::string &result,
+                    const std::string &input,
+                    const CryptoPP::SecByteBlock &key,
+                    ErrorContainer &error)
 {
     // precheck
-    if(key.size() == 0
-            || input.size() == 0)
+    if(key.size() == 0)
     {
+        error.addMeesage("Provided key for AES-encryption is empty");
+        return false;
+    }
+    if(input.size() == 0)
+    {
+        error.addMeesage("No data given for AES-encryption");
         return false;
     }
 
@@ -61,30 +68,35 @@ encrypt_AES_256(std::string &result,
  * @param result reference for the result of the decryption
  * @param input input to decrypt
  * @param key key for decryption
+ * @param error reference for error-output
  *
  * @return false, if input is invaid, else true
  */
 bool
-decrypt_AES_256(std::string &result,
-                const std::string &input,
-                const CryptoPP::SecByteBlock &key)
+decrypt_AES_256_CBC(std::string &result,
+                    const std::string &input,
+                    const CryptoPP::SecByteBlock &key,
+                    ErrorContainer &error)
 {
     // precheck
-    if(key.size() == 0
-            || input.size() == 0)
+    if(key.size() == 0)
     {
+        error.addMeesage("Provided key for AES-decryption is empty");
+        return false;
+    }
+    if(input.size() == 0)
+    {
+        error.addMeesage("No data given for AES-decryption");
         return false;
     }
 
     // precheck
     if(input.size() % CryptoPP::AES::BLOCKSIZE != 0)
     {
-        ErrorContainer error;
         error.addMeesage("can not decrypt AES256, "
                          "because the mount of data has the a size of a multiple"
                          " of the blocksize " + std::to_string(CryptoPP::AES::BLOCKSIZE));
         error.addSolution("data are broken or not an AES 256 encrypted string");
-        LOG_ERROR(error);
         return false;
     }
 
@@ -108,5 +120,5 @@ decrypt_AES_256(std::string &result,
     return true;
 }
 
-}
-}
+} // namespace Crypto
+} // namespace Kitsunemimi

@@ -44,5 +44,5 @@ Signing_Test::create_verify_HMAC_Sha256()
     TEST_EQUAL(Kitsunemimi::Crypto::verify_HMAC_SHA256(testData, resultingHmac, key), false);
 }
 
-}
-}
+} // namespace Crypto
+} // namespace Kitsunemimi

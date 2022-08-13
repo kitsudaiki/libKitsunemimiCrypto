@@ -33,7 +33,7 @@ bool verify_HMAC_SHA256(const std::string &input,
                         const std::string &hmac,
                         const CryptoPP::SecByteBlock &key);
 
-}
-}
+} // namespace Crypto
+} // namespace Kitsunemimi
 
 #endif // SIGNING_H

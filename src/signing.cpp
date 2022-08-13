@@ -76,6 +76,5 @@ verify_HMAC_SHA256(const std::string &input,
     return result;
 }
 
-}
-}
-
+} // namespace Crypto
+} // namespace Kitsunemimi

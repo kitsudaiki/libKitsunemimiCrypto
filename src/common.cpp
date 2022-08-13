@@ -381,5 +381,5 @@ base64UrlToBase64(std::string &base64Url)
 
 //==================================================================================================
 
-}
-}
+} // namespace Crypto
+} // namespace Kitsunemimi

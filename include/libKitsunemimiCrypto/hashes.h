@@ -26,7 +26,8 @@ void generate_SHA_256(std::string &result,
 void generate_SHA_256(std::string &result,
                       const void* input,
                       const uint64_t inputSize);
-}
-}
+
+} // namespace Crypto
+} // namespace Kitsunemimi
 
 #endif // HASHES_H
