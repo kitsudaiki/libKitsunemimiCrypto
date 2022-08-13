@@ -14,6 +14,9 @@ namespace Kitsunemimi
 namespace Crypto
 {
 
+// IMPORTANT: Workaround to use the HMAC-functions unter OpenSSL 3, avoided update for now to
+// avoid compatibility problems with older version. Will update to the new EVP_MAC-functions later
+#undef OPENSSL_API_COMPAT
 #define OPENSSL_API_COMPAT 0x10101000L
 
 /**
