@@ -51,14 +51,14 @@ function get_required_kitsune_lib_repo () {
 
 #-----------------------------------------------------------------------------------------------------------------
 
-get_required_kitsune_lib_repo "libKitsunemimiCommon" "v0.27.0" 4 "staticlib"
+get_required_kitsune_lib_repo "libKitsunemimiCommon" "v0.27.0" 8 "staticlib"
 
 #-----------------------------------------------------------------------------------------------------------------
 
 if [ $1 = "test" ]; then
-    build_kitsune_lib_repo "libKitsunemimiCrypto" 4 "staticlib run_tests"
+    build_kitsune_lib_repo "libKitsunemimiCrypto" 8 "staticlib run_tests"
 else
-    build_kitsune_lib_repo "libKitsunemimiCrypto" 4 "staticlib"
+    build_kitsune_lib_repo "libKitsunemimiCrypto" 8 "staticlib"
 fi
 
 #-----------------------------------------------------------------------------------------------------------------
