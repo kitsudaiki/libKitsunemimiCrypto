@@ -1,6 +1,6 @@
 # libKitsunemimiCrypto
 
-![Github workfloat status](https://img.shields.io/github/workflow/status/kitsudaiki/libKitsunemimiCrypto/build-and-test/develop?label=build%20and%20test&style=flat-square)
+![Github workfloat status](https://img.shields.io/github/actions/workflow/status/kitsudaiki/libKitsunemimiCrypto/build_test.yml?branch=develop&style=flat-square&label=build%20and%20test)
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/kitsudaiki/libKitsunemimiCrypto?label=version&style=flat-square)
 ![GitHub](https://img.shields.io/github/license/kitsudaiki/libKitsunemimiCrypto?style=flat-square)
 ![C++Version](https://img.shields.io/badge/c%2B%2B-17-blue?style=flat-square)
@@ -80,13 +80,13 @@ Example to encode and decode base64-strings:
 // encode
 std::string encodedStr = "";
 const std::string input = "asdfasdfasdf123a";
-Kitsunemimi::Crypto::encodeBase64(encodedStr, input.c_str(), input.size());
+Kitsunemimi::encodeBase64(encodedStr, input.c_str(), input.size());
 // encodedStr has now the content: "YXNkZmFzZGZhc2RmMTIzYQ=="
 
 
 // decode
 std::string decodedStr;
-Kitsunemimi::Crypto::decodeBase64(decodedStr, encodedStr);
+Kitsunemimi::decodeBase64(decodedStr, encodedStr);
 // decodedStr has now the content, which was the original input: "asdfasdfasdf123a"
 // if the input was not a valid string, decodeBase64 return false
 ```
@@ -113,12 +113,12 @@ CryptoPP::SecByteBlock key((unsigned char*)"asdf", 4);
 
 // encrypt
 std::string encryptionResult;
-Kitsunemimi::Crypto::encrypt_AES_256_CBC(encryptionResult, testData, key, error);
+Kitsunemimi::encrypt_AES_256_CBC(encryptionResult, testData, key, error);
 // encryptionResult now contains the encrypted result
 
 // decrypt
 std::string decryptionResult;
-Kitsunemimi::Crypto::decrypt_AES_256_CBC(decryptionResult, encryptionResult, key, error);
+Kitsunemimi::decrypt_AES_256_CBC(decryptionResult, encryptionResult, key, error);
 ```
 
 Both functions return `false`, if something went wrong. In this case the error-message can be converted to string with `error.toString()`.
@@ -133,12 +133,12 @@ Example for Sha256-hashing:
 
 std::string input = "test";
 std::string result = "";
-Kitsunemimi::Crypto::generate_SHA_256(result, input);
+Kitsunemimi::generate_SHA_256(result, input);
 // result now contains the string "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08"
 
 
 // the input doesn't have to be a string. You can also use a pointer to a byte-array like this
-Kitsunemimi::Crypto::generate_SHA_256(result, input.c_str(), input.size());
+Kitsunemimi::generate_SHA_256(result, input.c_str(), input.size());
 ```
 
 ### HMAC
@@ -157,12 +157,12 @@ CryptoPP::SecByteBlock key((unsigned char*)"asdf", 4);
 
 // create HMAC from the testData by useing the key
 std::string resultingHmac;
-Kitsunemimi::Crypto::create_HMAC_SHA256(resultingHmac, testData, key, error)
+Kitsunemimi::create_HMAC_SHA256(resultingHmac, testData, key, error)
 // resultingHmac has now the content "58yA7QZ+I1opAOhoaWLwj4wnxUKz5xaYafjE+Vcb6c4="
 // return false, if input-data or key is empty
 
 // check if a string belongs to an HMAC-value
-Kitsunemimi::Crypto::verify_HMAC_SHA256(testData, resultingHmac, key);
+Kitsunemimi::verify_HMAC_SHA256(testData, resultingHmac, key);
 // returns true, if the resultingHmac together with the key match with the testData
 ```
 

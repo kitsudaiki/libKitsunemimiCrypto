@@ -16,10 +16,10 @@
 
 int main()
 {
-    Kitsunemimi::Crypto::Common_Test();
-    Kitsunemimi::Crypto::Hashes_Test();
-    Kitsunemimi::Crypto::Signing_Test();
-    Kitsunemimi::Crypto::Symmetric_Encryption_Test();
+    Kitsunemimi::Common_Test();
+    Kitsunemimi::Hashes_Test();
+    Kitsunemimi::Signing_Test();
+    Kitsunemimi::Symmetric_Encryption_Test();
 
     return 0;
 }

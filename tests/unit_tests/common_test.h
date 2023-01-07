@@ -13,8 +13,6 @@
 
 namespace Kitsunemimi
 {
-namespace Crypto
-{
 
 class Common_Test
         : public Kitsunemimi::CompareTestHelper
@@ -32,7 +30,6 @@ private:
     void base64UrlToBase64_test();
 };
 
-} // namespace Crypto
 } // namespace Kitsunemimi
 
 #endif // COMMON_TEST_H

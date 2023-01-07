@@ -17,8 +17,6 @@
 
 namespace Kitsunemimi
 {
-namespace Crypto
-{
 
 //--------------------------------------------------------------------------------------------------
 // SHA256
@@ -72,5 +70,4 @@ generate_SHA_256(std::string &result,
     return true;
 }
 
-} // namespace Crypto
 } // namespace Kitsunemimi

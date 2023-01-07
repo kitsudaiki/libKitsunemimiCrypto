@@ -13,8 +13,6 @@
 
 namespace Kitsunemimi
 {
-namespace Crypto
-{
 
 class Hashes_Test
         : public Kitsunemimi::CompareTestHelper
@@ -26,7 +24,6 @@ private:
     void generate_SHA_256_test();
 };
 
-} // namespace Crypto
 } // namespace Kitsunemimi
 
 #endif // HASHES_TEST_H

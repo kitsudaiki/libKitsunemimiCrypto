@@ -11,8 +11,6 @@
 
 namespace Kitsunemimi
 {
-namespace Crypto
-{
 
 // IMPORTANT: Workaround to use the HMAC-functions unter OpenSSL 3, avoided update for now to
 // avoid compatibility problems with older version. Will update to the new EVP_MAC-functions later
@@ -61,7 +59,7 @@ create_HMAC_SHA256(std::string &result,
     HMAC_CTX_free(ctx);
 
     result = std::string((char*)hmacResult, len);
-    Kitsunemimi::Crypto::encodeBase64(result, result.c_str(), sizeof(result));
+    Kitsunemimi::encodeBase64(result, result.c_str(), sizeof(result));
 
     return true;
 }
@@ -95,5 +93,4 @@ verify_HMAC_SHA256(const std::string &input,
     return result;
 }
 
-} // namespace Crypto
 } // namespace Kitsunemimi
