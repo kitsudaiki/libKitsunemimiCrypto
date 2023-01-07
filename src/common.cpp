@@ -13,8 +13,6 @@
 
 namespace Kitsunemimi
 {
-namespace Crypto
-{
 
 void
 hexEncode(std::string &result,
@@ -381,5 +379,4 @@ base64UrlToBase64(std::string &base64Url)
 
 //==================================================================================================
 
-} // namespace Crypto
 } // namespace Kitsunemimi

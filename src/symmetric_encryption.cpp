@@ -11,8 +11,6 @@
 
 namespace Kitsunemimi
 {
-namespace Crypto
-{
 
 /**
  * @brief encrypt aes-256-cbc encrypted data
@@ -120,5 +118,4 @@ decrypt_AES_256_CBC(std::string &result,
     return true;
 }
 
-} // namespace Crypto
 } // namespace Kitsunemimi

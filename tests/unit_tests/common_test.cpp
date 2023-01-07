@@ -13,8 +13,6 @@
 
 namespace Kitsunemimi
 {
-namespace Crypto
-{
 
 Common_Test::Common_Test()
     : Kitsunemimi::CompareTestHelper("Common_Test")
@@ -112,5 +110,4 @@ Common_Test::base64UrlToBase64_test()
     TEST_EQUAL(input, "ab/4+3==");
 }
 
-} // namespace Crypto
 } // namespace Kitsunemimi

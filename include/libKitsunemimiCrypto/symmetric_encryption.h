@@ -20,8 +20,6 @@
 
 namespace Kitsunemimi
 {
-namespace Crypto
-{
 
 //--------------------------------------------------------------------------------------------------
 // AES256
@@ -36,7 +34,6 @@ bool decrypt_AES_256_CBC(std::string &result,
                          const CryptoPP::SecByteBlock &key,
                          Kitsunemimi::ErrorContainer &error);
 
-} // namespace Crypto
 } // namespace Kitsunemimi
 
 #endif // SYMMETRIC_ENCRYPTION_H
